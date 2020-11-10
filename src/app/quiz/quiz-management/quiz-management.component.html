@@ -1,0 +1,118 @@
+
+<!-- Timer :: Start-->
+<div class="row" >
+    <div class="col-sm-12 col-md-6 ">
+      <div class="login">
+        <h5>HELLO {{ childMessage.firstName | uppercase }} {{ childMessage.lastName | uppercase }}</h5>
+     </div>
+    </div>
+    <div class="col-sm-12 col-md-6 ">
+        <div  class="fixed">
+           <h5>Time Left:</h5>
+           <countdown  #cd [config]="{leftTime: 900, demand: true}"></countdown>    
+        </div>
+    </div>    
+</div>
+<!-- Timer :: Start-->
+
+<!-- Quiz-home :: Start-->
+<div class="card border-success mb-3" *ngIf="displayView === 'homePage'">
+    <div class="card-header">
+       <i class="fa fa-bars"></i><strong class="ml-2">Quiz</strong>
+    </div>
+    <div class="card-body">
+        <p>Take this awesome quiz that will help improve your understanding of Aptitude. 
+            See if you can beat the clock! The timed questionnaire with automatic scoring provides 
+            you with a final score along with a summary of your answers. Match wits with your friends! 
+            Practice to increase your knowledge. Good luck and have fun with this quiz. Share and enjoy!</p>
+            <div class="d-flex justify-content-center">
+                <button (click)="displayView = 'quizPage'"  class="btn btn-success btn-sm">Take a quiz</button>
+            </div>
+    </div>
+</div>
+<!-- Quiz-home :: End-->
+
+<!-- Instructions  :: Start-->
+<div class="card border-success mb-3" *ngIf="displayView === 'quizPage'">
+        <div class="card-header">
+           <i class="fa fa-bars"></i><strong class="ml-2">Instrouctions :</strong>
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Total number of questions : 10.</li>
+                <li>Time alloted : 15 minutes.</li>
+                <li>Each question carry 1 mark, no negative marks.</li>
+                <li>DO NOT refresh the page.</li>
+                <li>All The best.</li>
+            </ul>
+                <div class="d-flex justify-content-center">
+                    <button (click)="cd.begin()" (click)="displayView = 'questionPage'" class="btn btn-success ">Start</button>
+                </div>
+        </div>
+</div>
+<!-- Instructions :: End-->
+
+<!-- Questions  :: Start-->
+<span *ngIf="displayView === 'questionPage'">
+    <form [formGroup]="registerForm" class="chooseLanguage" >
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <label>Select a Langauge: </label>
+                <select formControlName="languages" class="form-control" (ngModelChange)="chooseLanguages($event)" >
+                    <option value="">Please Select</option>
+                    <option *ngFor="let data of quizList">{{ data.languages }}</option>
+                </select>  
+            </div>              
+        </div>
+    </form>
+<div class="card">
+    <div class="card-body">
+        <div *ngFor="let list of questionList ; let i = index" >
+            <span *ngIf="id === list.id"> 
+            <h4>Q.{{ list.id }} {{ list.question }}</h4><br>  
+            <div class="form-check" *ngFor="let data of list.options ">
+                 <input
+                 class="form-check-input"
+                 type="radio"
+                 name="name"
+                 (change)="onSelectOption(list.id,$event)"        
+                 [value]="data"              
+                />
+             <label
+              class="form-check-label"
+              for="name"    
+              formcontrolname="options" 
+              (change)="onSelectOption(list.id,$event)"   
+              >{{ data }}</label>      
+            </div><br>
+            <strong *ngIf="enableAnswer && id === list.id" style="color: green;">Answer : {{ list.answer }}</strong><br>
+            <button *ngIf ="questionList.length > list.id" class="btn btn-primary pull-right" (click)="changeId(list.id)">Next</button>
+            <button  *ngIf ="list.id === questionList.length" (click)="cd.stop()" class="btn btn-primary pull-right" (click)="displayView = 'resultPage'" >Submit</button>
+            <button *ngIf ="list.id > 1" class="btn btn-primary pull-right" (click)="changePrev(list.id)">Prev</button>
+           
+        </span>
+        </div>
+    </div>
+</div>
+</span>
+<!-- Questions  :: End-->
+
+<!-- Submit Page  :: Start-->
+<div *ngIf="displayView === 'resultPage'"  class="d-flex justify-content-center">
+    <div class="card border-success" style="margin-top: 200px;">
+        <div class="card-body">
+            <span class="success">
+                <h1>Completed Successfully !!!</h1>
+                <!-- <img src="assets/images/completed.jpg" alt="completed"> -->
+                <h2>Total score : {{ total }} out of / {{ questionList.length}}</h2>
+              </span>
+              <div class="d-flex justify-content-center">
+                <button class="btn btn-success " (click)="displayView = 'homePage'">Back to home</button>
+            </div>
+        </div>
+    </div>    
+</div>
+<!-- Submit Page  :: End-->
+
+
+
