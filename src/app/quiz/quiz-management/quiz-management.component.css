@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+.card{
+    margin: 100px 100px;
+}
+
+.countdown{
+    background-color: green;
+    color: white;
+}
+
+.btn{
+   margin-left: 10px;
+}
+
+.chooseLanguage{
+    margin-top: 100px;
+    margin-left: 150px;
+}
+
+#timer{
+   padding: 10px;
+   background-color: dodgerblue;
+   color: white;
+   width: 150px;
+   height: 70px;
+  
+}
+
+.fixed{
+    position: fixed;
+    top: 0;
+    right: 100px;
+    /* width: 300px; */
+}
+
+.login{
+    position: fixed;
+    top: 0;
+    left: 100px;
+}
+
+
+
+

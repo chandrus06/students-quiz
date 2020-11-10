@@ -1,0 +1,47 @@
+<div class="container" class="d-flex justify-content-center" *ngIf="!displayView">  
+   <div class="card">
+     <div class="card-header">
+      <div class="d-flex justify-content-center">
+        <h3>Student Login </h3>
+      </div>
+     </div>
+     <div class="card-body">
+      <form [formGroup]="registerForm" >
+        <div class="form-row">
+            <div class="form-group col">
+                <label>First Name : <span class="reqField">*</span></label>
+                <input 
+                  type="text" 
+                  formControlName="firstName"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" 
+                />
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col">
+            <label>Last Name : <span class="reqField">*</span></label>
+            <input 
+              type="text" 
+              formControlName="lastName"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" 
+            />
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        </div>
+      </div>
+        </div>
+      </form>
+      <div class="d-flex justify-content-center">
+        <button class="btn btn-primary" (click)="onSubmit(registerForm.value)">Login</button>
+      </div>
+      </div>
+   </div>
+  </div>
+
+  <app-quiz-management *ngIf="displayView" [childMessage]="parentMessage"></app-quiz-management>
+  

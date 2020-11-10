@@ -1,0 +1,136 @@
+{
+   "quiz":[
+       {
+            "languages": "c",
+            "test": [
+            {
+                "id":1,
+                "question":"The keyword used to transfer control from a function back to the calling function is",
+                "options": ["switch","goto","go back","return"],
+                "answer": "return"
+               },
+               {
+                "id":2,
+                "question":"Which of the following special symbol allowed in a variable name?",
+                "options": ["* (asterisk)","| (pipeline)","- (hyphen)","_ (underscore)"],
+                "answer": "_ (underscore)"
+               },
+               {
+                "id":3,
+                "question":"A function cannot be defined inside another function ",
+                "options": ["True", "False"],
+                "answer": "True"
+               },
+               {
+                "id":4,
+                "question":"Functions cannot return more than one value at a time",
+                "options": ["True", "False"],
+                "answer": "True"
+               },
+               {
+                "id":5,
+                "question":"Which of the following functions from “stdio.h” can be used in place of printf()?",
+                "options": ["fputs() with FILE stream as stdout","fprintf() with FILE stream as stdout.","fwrite() with FILE stream as stdout","All of the above three - a, b and c"],
+                "answer": "fprintf() with FILE stream as stdout."
+               },
+               {
+                "id":6,
+                "question": "The keyword used to transfer control from a function back to the calling function is",
+                "options": ["switch","goto","go back","return"],
+                "answer": "return"
+               },
+               {
+                "id":7,
+                "question":"The keyword used to transfer control from a function back to the calling function is",
+                "options": ["continue","goto","break","All of the above"],
+                "answer": "All of the above"
+               },
+               {
+                "id":8,
+                "question":"Suppose a C program has floating constant 1.414, what's the best way to convert this as float data type?",
+                "options": ["(float)1.414","float(1.414)","1.414f","1.414 itself of float data type i.e. nothing else required."],
+                "answer": "1.414f"
+               },
+               {
+                "id":9,
+                "question":"Linker generates ___ file",
+                "options": ["Object code","Executable code","Assembly code","None of the above"],
+                "answer": "Executable code"
+               },
+               {
+                "id":10,
+                "question":"In C all functions except main() can be called recursively.",
+                "options": ["True", "False"],
+                "answer": "False"
+               }       
+            ]
+        },
+        
+        {
+        "languages": "c++",
+            "test": [
+            {
+                "id":1,
+                "question":"Which of the following also known as an instance of a class?",
+                "options": ["Friend Functions","Object","Member Functions","Member Variables"],
+                "answer": "Object"
+               },
+               {
+                "id":2,
+                "question":"Which of the following special symbol allowed in a variable name?",
+                "options": ["* (asterisk)","| (pipeline)","- (hyphen)","_ (underscore)"],
+                "answer": "_ (underscore)"
+               },
+               {
+                "id":3,
+                "question":"Which of the following cannot be passed to a function in C++ ?",
+                "options": ["Constant","Structure","Array","Header file"],
+                "answer": "Header file"
+               },
+               {
+                "id":4,
+                "question":"A member function can always access the data in __________ , (in C++).",
+                "options": ["the class of which it is member","the object of which it is a member","the public part of its class","the private part of its class"],
+                "answer": "the class of which it is member"
+               },
+               {
+                "id":5,
+                "question":"Destructor has the same name as the constructor and it is preceded by",
+                "options": ["!","*","*","~"],
+                "answer": "~"
+               },
+               {
+                "id":6,
+                "question":"Which of the following is not correct for virtual function in C++ ?",
+                "options": ["Must be declared in public section of class.","Virtual function can be static","Virtual function should be accessed using pointers","Virtual function is defined in base class."],
+                "answer": "Must be declared in public section of classt"
+               },
+               {
+                "id":7,
+                "question":"Can destuctors be private in C++?",
+                "options": ["Yes","No"],
+                "answer": "Yes"
+               },
+               {
+                "id":8,
+                "question":"Like constructors, can there be more than one destructors in a class?",
+                "options": ["Yes","No"],
+                "answer": "No"
+               },
+               {
+                "id":9,
+                "question":"Which of the following statement is correct?",
+                "options": ["Class is an instance of object","Object is an instance of data type","Class is an instance of data type","Object is an instance of a class"],
+                "answer": "Object is an instance of a class"
+               },
+               {
+                "id":10,
+                "question":"Which of the following access specifier is used as a default in a class definition?",
+                "options": ["private","protected","public","friend"],
+                "answer": "private"
+               }       
+            ]
+        }
+      
+   ] 
+}
