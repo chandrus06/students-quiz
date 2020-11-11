@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WebsiteModule } from './website/website.module';
+// import { WebsiteModule } from './website/website.module';
 import { QuizModule } from './quiz/quiz.module';
 
 @NgModule({
@@ -15,7 +15,6 @@ import { QuizModule } from './quiz/quiz.module';
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    WebsiteModule,
     QuizModule
   ],
   providers: [],

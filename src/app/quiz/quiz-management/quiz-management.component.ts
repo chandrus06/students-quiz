@@ -23,6 +23,7 @@ export class QuizManagementComponent implements OnInit {
   alertMsg: boolean | undefined = undefined;
   enableAnswer: boolean | undefined = undefined;
   enableTimer: boolean | undefined = undefined;
+  showQuestions: boolean | undefined = undefined;
   total : number = 0;
   id: number  = 1;
   
@@ -50,16 +51,18 @@ export class QuizManagementComponent implements OnInit {
     this.questionList = this.quizList.find(
       (data: any) => data.languages === event
     ).test;  
-   
+   this.showQuestions = true;
   }
 
   changeId(index : number){
-    this.enableAnswer = false
-     this.id = index + 1;
+    this.enableAnswer = false;
+    this.alertMsg = undefined;
+     this.id = index + 1;     
   }
 
   changePrev(index: number){
-    this.enableAnswer = false
+    this.enableAnswer = false;
+    this.alertMsg = undefined;
     this.id = index - 1;
   } 
  
@@ -69,13 +72,18 @@ export class QuizManagementComponent implements OnInit {
       return id === value.id;
     });
     if(selectedOption === selectedid[0].answer) {
+      this.alertMsg = true;
       this.total++;
       this.enableAnswer = false;
     }else{
-     
+      this.alertMsg = false;
       this.enableAnswer = true;
      
     }
+    
   } 
-
+  
+  onSubmit(){
+    this.showQuestions = false;
+  }
 }

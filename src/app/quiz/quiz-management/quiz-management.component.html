@@ -46,14 +46,14 @@
                 <li>All The best.</li>
             </ul>
                 <div class="d-flex justify-content-center">
-                    <button (click)="cd.begin()" (click)="displayView = 'questionPage'" class="btn btn-success ">Start</button>
+                    <button (click)="cd.begin()" (click)="displayView = 'dropdownContent'" class="btn btn-success ">Start</button>
                 </div>
         </div>
 </div>
 <!-- Instructions :: End-->
 
 <!-- Questions  :: Start-->
-<span *ngIf="displayView === 'questionPage'">
+<span *ngIf="displayView === 'dropdownContent'">
     <form [formGroup]="registerForm" class="chooseLanguage" >
         <div class="row">
             <div class="col-sm-12 col-md-6">
@@ -65,6 +65,8 @@
             </div>              
         </div>
     </form>
+</span>
+<span *ngIf="showQuestions">
 <div class="card">
     <div class="card-body">
         <div *ngFor="let list of questionList ; let i = index" >
@@ -82,12 +84,30 @@
               class="form-check-label"
               for="name"    
               formcontrolname="options" 
-              (change)="onSelectOption(list.id,$event)"   
-              >{{ data }}</label>      
+             >{{ data }}</label>      
             </div><br>
+              <!-- Alert :: start -->
+       <alert
+       *ngIf="alertMsg === true"
+       type="success"
+       dismissOnTimeout="700"
+       (onClosed)="alertMsg = true"
+     >
+       Your answer is correct.
+     </alert>
+     <alert
+       *ngIf="alertMsg === false"
+       type="warning"
+       dismissOnTimeout="700"
+       (onClosed)="alertMsg = false"
+     >
+     Your answer is not  correct.
+     </alert>
+    <!-- Alert :: End -->
+
             <strong *ngIf="enableAnswer && id === list.id" style="color: green;">Answer : {{ list.answer }}</strong><br>
             <button *ngIf ="questionList.length > list.id" class="btn btn-primary pull-right" (click)="changeId(list.id)">Next</button>
-            <button  *ngIf ="list.id === questionList.length" (click)="cd.stop()" class="btn btn-primary pull-right" (click)="displayView = 'resultPage'" >Submit</button>
+            <button  *ngIf ="list.id === questionList.length" (click)="cd.stop()" class="btn btn-primary pull-right" (click)="displayView = 'resultPage'" (click)="onSubmit()" >Submit</button>
             <button *ngIf ="list.id > 1" class="btn btn-primary pull-right" (click)="changePrev(list.id)">Prev</button>
            
         </span>
@@ -98,7 +118,8 @@
 <!-- Questions  :: End-->
 
 <!-- Submit Page  :: Start-->
-<div *ngIf="displayView === 'resultPage'"  class="d-flex justify-content-center">
+<span *ngIf="displayView === 'resultPage'">
+<div class="d-flex justify-content-center">
     <div class="card border-success" style="margin-top: 200px;">
         <div class="card-body">
             <span class="success">
@@ -112,6 +133,7 @@
         </div>
     </div>    
 </div>
+</span>
 <!-- Submit Page  :: End-->
 
 

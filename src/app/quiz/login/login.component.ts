@@ -29,12 +29,13 @@ export class LoginComponent implements OnInit {
   onSubmit(data: any) {
     this.parentMessage = data;
     this.submitted = true;
-    this.displayView = true;
+   
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
         return;
     }
+    this.displayView = true;
   }
 
 }
